@@ -9,5 +9,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Pengguna extends Authenticatable
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = [
+        'username',
+        'password',
+        'role'
+    ];
 }
