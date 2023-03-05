@@ -20,8 +20,9 @@ class PenggunaController extends Controller
             'username'=>$request->username,
             'password'=>$request->password
         ];
-        if(Auth::attempt($validasi)){
-            return 'sukses';
+
+        if(Auth::guard('pengguna')->attempt($validasi)){
+            return redirect()->route('home');
         }
         else{
             return 'login gagal';
