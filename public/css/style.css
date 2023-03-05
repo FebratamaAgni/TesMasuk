@@ -1,0 +1,42 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #d1fff3;
+    margin-top: 100px;
+  }
+  .navbar {
+    width: 51%;
+    justify-content: center;
+    margin: auto;
+  }
+  #login {
+    width: 50%;
+    justify-content: center;
+    margin: auto;
+  }
+  #daftar {
+    justify-content: center;
+    margin: auto;
+    width: 50%;
+    text-align: center;
+  }
+  #daftar1 {
+    justify-content: center;
+    margin: auto;
+    width: 50%;
+  }
+  #kembali {
+    justify-content: center;
+    margin: auto;
+    width: 50%;
+    text-align: center;
+  }
+  #tambah {
+    justify-content: center;
+    margin: auto;
+    width: 51%;
+  }
+  #ubah {
+    justify-content: center;
+    margin: auto;
+    width: 51%;
+  }
