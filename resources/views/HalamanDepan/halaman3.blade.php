@@ -32,6 +32,9 @@
               <li class="nav-item">
                 <a class="nav-link active" href="/halaman3">Halaman 3</a>
               </li>
+              <li class="nav-item">
+                <a class="btn btn-light" href="{{ route('logout') }}">Logout</a>
+              </li>
             </ul>
           </div>
         </div>

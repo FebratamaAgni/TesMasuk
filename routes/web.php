@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('LoginRegister.login');
 });
 
-Route::get('/home', [HomeController::class, 'home'])->name('home');
+Route::get('/home', [HomeController::class, 'home'])->name('home')->middleware('auth','admin');
 Route::get('/halaman1', [HomeController::class, 'hal1'])->name('hal1');
 Route::get('/halaman2', [HomeController::class, 'hal2'])->name('hal2');
 Route::get('/halaman3', [HomeController::class, 'hal3'])->name('hal3');
@@ -29,3 +29,5 @@ Route::post('/login', [PenggunaController::class, 'masuk'])->name('masuk');
 
 Route::get('/register', [PenggunaController::class, 'register'])->name('register');
 Route::post('/register', [PenggunaController::class, 'daftar'])->name('daftar');
+
+Route::get('/logout', [PenggunaController::class, 'logout'])->name('logout');
