@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pengguna;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,23 +10,16 @@ class PenggunaController extends Controller
 {
     // untuk tampilan login
     public function login(){
+        if(Auth::check()){
+            return redirect()->route('home');
+        };
         return view('LoginRegister.login');
     }
 
     // fungsi autentikasi saat user login 
-    public function masuk(Request $request){
-        $request->validate([
-            'username'=>'required',
-            'password'=>'required'
-        ]);
-        $validasi = [
-            'username'=>$request->username,
-            'password'=>$request->password
-        ];
-
-        if(Auth::guard('pengguna')->attempt($validasi)){
-            $request->session()->regenerate();
-            return redirect()->intended('home');
+    public function postLogin(Request $request){
+        if(Auth::attempt($request->only('email', 'password'))){
+            return redirect()->route('home');
         }
         return back();
     }
@@ -37,22 +30,28 @@ class PenggunaController extends Controller
     }
 
     // fungsi autentikasi saat user registrasi
-    public function daftar(Request $request){
-       $validasi = $request->validate([
-            'username' => 'required',
+    public function postRegister(Request $request){
+       $request->validate([
+            'email' => 'required',
             'password' => 'required',
             'role' => 'required'
         ]);
 
-        $validasi['password'] = bcrypt($validasi['password']);
+        $request['password'] = bcrypt($request['password']);
 
-        Pengguna::create($validasi);
-
+        $data = [
+            'email' => $request->email,
+            'password' => $request->password,
+            'role' => $request->role,
+        ];
+        User::create($data);
+        
         return redirect()->route('register');
     }
 
+    // fungsi logout
     public function logout(){
         Auth::logout();
-        return redirect('login');
+        return redirect()->route('login');
     }
 }

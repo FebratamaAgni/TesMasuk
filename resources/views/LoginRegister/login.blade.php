@@ -35,11 +35,11 @@
     <section id="login">
         <div class="container bg-light">
             <div class="row">
-                <form action="{{ route('masuk') }}" method="post">
+                <form action="{{ route('postLogin') }}" method="post">
                     @csrf
                     <div class="col-12 mt-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" name="username" id="username" placeholder="Masukkan Username Anda" required>
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email Anda" required>
                     </div>
                     <div class="col-12 mt-3">
                         <label for="password" class="form-label">Password</label>

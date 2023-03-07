@@ -34,21 +34,18 @@
     <section id="daftar1">
         <div class="container bg-light">
             <div class="row">
-                <form action="{{ route('daftar') }}" method="post">
+                <form action="{{ route('postRegister') }}" method="post">
                     @csrf
                     <div class="col-12 my-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control @error('username') is-invalid                
-                        @enderror" name="username" id="username" placeholder="Masukkan Username" required>
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email" required>
                     </div>
                     <div class="col-12 mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control @error('password') is-invalid                
-                        @enderror" name="password" id="password" placeholder="Masukkan Password" required>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Password" required>
                     </div>
                     <div class="col-12 mb-3">
-                        <select class="form-select @error('username') is-invalid                
-                        @enderror" name="role" aria-label="Default select example">
+                        <select class="form-select" name="role" aria-label="Default select example">
                             <option selected>Masukkan Role</option>
                             <option value="admin">Admin</option>
                             <option value="seller">Seller</option>
