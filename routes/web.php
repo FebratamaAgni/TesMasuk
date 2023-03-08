@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\PenggunaController;
-use App\Http\Middleware\CekRole;
+use App\Models\Pengguna;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,11 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-// Route::get('/halaman2', [HalamanController::class, 'hal2'])->name('hal2');
-Route::get('/halaman3', [HalamanController::class, 'hal3'])->name('hal3');
-
 Route::get('/login', [PenggunaController::class, 'login'])->name('login');
 Route::post('/login', [PenggunaController::class, 'postLogin'])->name('postLogin');
 
@@ -35,13 +30,15 @@ Route::get('/logout', [PenggunaController::class, 'logout'])->name('logout');
 
 Route::group(['middleware'=> ['auth']], function(){
     Route::get('/home', [HalamanController::class, 'home'])->name('home');
-
 });
 
-Route::group(['middleware'=> ['auth', 'cekrole:admin']], function(){
+Route::group(['middleware'=> ['auth', 'cekrole:admin,user']], function(){
     Route::get('/halaman1', [HalamanController::class, 'hal1'])->name('hal1');
 });
-Route::group(['middleware'=> ['auth', 'cekrole:user']], function(){
+
+Route::group(['middleware'=> ['auth', 'cekrole:admin,seller']], function(){
     Route::get('/halaman2', [HalamanController::class, 'hal2'])->name('hal2');
-    
+    Route::get('/halaman3', [HalamanController::class, 'hal3'])->name('hal3');
 });
+
+Route::get('/tes', [PenggunaController::class, 'kirim_email'])->name('kirim_email');

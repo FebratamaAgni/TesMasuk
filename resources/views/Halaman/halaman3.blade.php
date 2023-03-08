@@ -3,9 +3,8 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Ini adalah halaman 3</h1>
+      <h1>Ini adalah halaman 3, bisa dibuka oleh admin dan seller saja.</h1>
     </div>
   </div>
 </div>
-  
 @endsection
