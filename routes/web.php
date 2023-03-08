@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\PenggunaController;
-use App\Models\Pengguna;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,4 +40,4 @@ Route::group(['middleware'=> ['auth', 'cekrole:admin,seller']], function(){
     Route::get('/halaman3', [HalamanController::class, 'hal3'])->name('hal3');
 });
 
-Route::get('/tes', [PenggunaController::class, 'kirim_email'])->name('kirim_email');
+Route::get('/tes', [PenggunaController::class, 'kirimEmail'])->name('kirimEmail');
