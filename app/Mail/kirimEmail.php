@@ -29,7 +29,7 @@ class kirimEmail extends Mailable
     {
         return new Envelope(
             from: new Address('vava@example.com', 'Vava'),
-            subject: 'Kirim Email',
+            subject: 'Berhasil Mendaftar Akun',
         );
     }
 

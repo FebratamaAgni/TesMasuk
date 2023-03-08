@@ -47,7 +47,6 @@
                     <div class="col-12 mb-3">
                         <select class="form-select" name="role" aria-label="Default select example">
                             <option selected>Masukkan Role</option>
-                            <option value="admin">Admin</option>
                             <option value="seller">Seller</option>
                             <option value="user">User</option>
                           </select>                        

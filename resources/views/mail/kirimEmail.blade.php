@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Kirim Email Berhasil</h1>
+    <h1>Selamat Datang</h1>
 </body>
 </html>
