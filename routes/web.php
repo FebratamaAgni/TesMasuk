@@ -39,5 +39,3 @@ Route::group(['middleware'=> ['auth', 'cekrole:admin,seller']], function(){
     Route::get('/halaman2', [HalamanController::class, 'hal2'])->name('hal2');
     Route::get('/halaman3', [HalamanController::class, 'hal3'])->name('hal3');
 });
-
-Route::get('/tes', [PenggunaController::class, 'kirimEmail'])->name('kirimEmail');

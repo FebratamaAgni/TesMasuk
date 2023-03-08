@@ -14,6 +14,7 @@ class CekRole
      */
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
+        // jika role sesuai apa yang telah didaftarkan/autentikasi, maka akan diizinkan masuk mengakses aplikasi sesuai role
         if(in_array($request->user()->role, $roles)){
             return $next($request);
         }

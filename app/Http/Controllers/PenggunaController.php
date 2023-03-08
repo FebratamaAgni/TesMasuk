@@ -12,6 +12,7 @@ class PenggunaController extends Controller
 {
     // untuk tampilan login
     public function login(){
+        // jika pengguna sudah login, maka tidak bisa membuka halaman login/register sebelum logout
         if(Auth::check()){
             return redirect()->route('home');
         };
@@ -28,6 +29,10 @@ class PenggunaController extends Controller
 
     // untuk tampilan register
     public function register(){
+        // jika pengguna sudah login, maka tidak bisa membuka halaman login/register sebelum logout
+        if(Auth::check()){
+            return redirect()->route('home');
+        };
         return view('LoginRegister.register');
     }
 
@@ -43,7 +48,9 @@ class PenggunaController extends Controller
 
         User::create($validasi);
         
+        // untuk mengirim email setiap mendaftar akun baru
         Mail::to($request->email)->send(new kirimEmail());
+        
         return redirect()->route('register');
     }
 
