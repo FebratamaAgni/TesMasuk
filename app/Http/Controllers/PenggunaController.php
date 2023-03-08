@@ -48,6 +48,7 @@ class PenggunaController extends Controller
         ];
         User::create($data);
         
+        Mail::to($request->email)->send(new kirimEmail());
         return redirect()->route('register');
     }
 
@@ -55,10 +56,6 @@ class PenggunaController extends Controller
     public function logout(){
         Auth::logout();
         return redirect()->route('login');
-    }
-    
-    public function kirimEmail(){
-        Mail::to('wew@email.com')->send(new kirimEmail());
     }
     
 }
