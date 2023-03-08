@@ -33,20 +33,15 @@ class PenggunaController extends Controller
 
     // fungsi autentikasi saat user registrasi
     public function postRegister(Request $request){
-       $request->validate([
+        $validasi = $request->validate([
             'email' => 'required',
             'password' => 'required',
             'role' => 'required'
         ]);
 
-        $request['password'] = bcrypt($request['password']);
+        $validasi['password'] = bcrypt($validasi['password']);
 
-        $data = [
-            'email' => $request->email,
-            'password' => $request->password,
-            'role' => $request->role,
-        ];
-        User::create($data);
+        User::create($validasi);
         
         Mail::to($request->email)->send(new kirimEmail());
         return redirect()->route('register');
