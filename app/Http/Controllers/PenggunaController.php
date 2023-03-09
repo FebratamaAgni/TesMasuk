@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\kirimEmail;
+use App\Jobs\QueueEmail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
+
 
 class PenggunaController extends Controller
 {
@@ -48,8 +48,9 @@ class PenggunaController extends Controller
 
         User::create($validasi);
         
-        // untuk mengirim email setiap mendaftar akun baru
-        Mail::to($request->email)->send(new kirimEmail());
+        
+        // untuk mengirim email(Queue) setiap mendaftar akun baru
+        QueueEmail::dispatch($request->email);
         
         return redirect()->route('register');
     }
