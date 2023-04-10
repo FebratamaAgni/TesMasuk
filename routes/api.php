@@ -16,18 +16,9 @@ use App\Http\Controllers\PenggunaController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-// Route::get('/login', [PenggunaController::class, 'login'])->
-// name('login');
-
 Route::post('/login', [PenggunaController::class, 'postLogin'])->
 name('postLogin');
 
-// Route::get('/register', [PenggunaController::class, 'register'])->
-// name('register');
 
 Route::post('/register', [PenggunaController::class, 'postRegister'])->
 name('postRegister');
